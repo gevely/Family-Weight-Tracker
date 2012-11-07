@@ -35,7 +35,7 @@ public class PersonDetailsActivity extends Activity {
 
 		// create the two fragments we want to use for display content
 		Fragment weightEntryFragment = new WeightEntryFragment(appContext, id);
-		Fragment weightGraphFragment = new WeightGraphFragment(/*appContext, id*/);
+		Fragment weightGraphFragment = new WeightGraphFragment(appContext, id);
 
 		// set the Tab listener. Now we can listen for clicks.
 		weightEntryTab.setTabListener(new TabsListener(weightEntryFragment));

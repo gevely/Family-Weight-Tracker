@@ -5,13 +5,12 @@
         android:id="@+id/editPerson"
         android:icon="@drawable/ic_action_edit"
         android:showAsAction="ifRoom"
-        android:title="Edit Person">
-    </item>
+        android:title="@string/mnuEditPerson"/>
+    
     <item
         android:id="@+id/deletePerson"
         android:icon="@drawable/ic_action_delete"
         android:showAsAction="ifRoom"
-        android:title="Delete Person">
-    </item>
-
-</menu>
+        android:title="@string/mnuDeletePerson"/>
+    
+   </menu>

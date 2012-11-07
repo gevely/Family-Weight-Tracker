@@ -77,39 +77,18 @@ public class WeightEntryFragment extends Fragment {
 		listWeights.setAdapter(mAdapter);
 
 		listWeights.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		listWeights.setOnItemLongClickListener(new OnItemLongClickListener() {
+		listWeights.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
 				
 				mSelectedItem = listWeights.getCheckedItemPosition();
 
 				// Start the CAB using the ActionMode.Callback defined above
-				//mActionMode = PersonDetailsActivity.this.startActionMode(mActionModeCallback);
-				//arg1.setSelected(true);
-				
-				return false;
-			}
-		});
-		
-		listWeights.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				
-				mSelectedItem = listWeights.getCheckedItemPosition();
-
-				if ((mAdapter.getCount() > 0) && (mAdapter.getCount() >= mSelectedItem)) {
-					final Weight weight = (Weight) mAdapter.getItem(mSelectedItem);
-					/*Intent intent = new Intent();
-					intent.setClass(appContext, PersonDetailsActivity.class);
-				    Long personId = person.getId();
-				    intent.putExtra(PERSON_ID, personId);
-				    startActivity(intent);*/
-				}
-				
+				mActionMode = getActivity().startActionMode(mActionModeCallback);
+				arg1.setSelected(true);
+			
 			}
 		});
 		
@@ -137,13 +116,13 @@ public class WeightEntryFragment extends Fragment {
 		// Called when the user selects a contextual menu item
 		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 			switch (item.getItemId()) {
-			case R.id.editPerson:
+			case R.id.editWeight:
 				//editPersonDetails();
 				// Action picked, so close the CAB
 				mode.finish();
 				return true;
-			case R.id.deletePerson:
-				//deletePerson();
+			case R.id.deleteWeight:
+				deleteWeight();
 				// Action picked, so close the CAB
 				mode.finish();
 				return true;
@@ -161,11 +140,6 @@ public class WeightEntryFragment extends Fragment {
 
 	public final void addWeightDetails() {
 
-		// Preparing views
-		LayoutInflater inflater = (LayoutInflater) appContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.weight_entry_fragment, null);
-		// layout_root should be the name of the "top-level" layout node in the
-		// dialog_layout.xml file.
 		final EditText weightBox = (EditText) getActivity().findViewById(R.id.edtWeight);
 
 		// save info where you want it

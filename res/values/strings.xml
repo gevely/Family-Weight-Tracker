@@ -13,5 +13,9 @@
     <string name="title_activity_person_details">PersonDetailsActivity</string>
     <string name="lblWeightEntry">Enter Weight (kg): </string>
     <string name="lblSubmit">Submit</string>
-    
+    <string name="mnuEditPerson">Edit Person</string>
+    <string name="mnuDeletePerson">Delete Person</string>
+    <string name="mnuEditWeight">Edit Weight</string>
+    <string name="mnuDeleteWeight">Delete Weight</string>
+        
 </resources>
