@@ -3,13 +3,13 @@
     <!-- style name="AppTheme" parent="android:Theme.Holo.Light" / -->
     
     <style name="MyTheme" parent="android:Theme.Holo.Light">
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
         <item name="android:windowBackground">@color/translucent_red</item>
         <item name="android:listViewStyle">@style/MyListView</item>
     </style>
 
     <style name="MyListView" parent="@android:style/Widget.ListView">
-        <item name="android:listSelector">@drawable/ic_launcher</item>
+        <item name="android:listSelector">@android:color/holo_red_light</item>
     </style>
 
 </resources>
