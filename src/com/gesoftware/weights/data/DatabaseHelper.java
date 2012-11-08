@@ -16,9 +16,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_WEIGHTS_ID = "_id";
 	public static final String COLUMN_WEIGHTS_PERSON_ID = "PersonId";
 	public static final String COLUMN_WEIGHTS_WEIGHT = "Weight";
+	public static final String COLUMN_WEIGHTS_TIMESTAMP = "Timestamp";
 
 	private static final String DATABASE_NAME = "WeightTracker.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// Database creation sql statement
 	private static final String TABLE_PEOPLE_CREATE = "create table "
@@ -29,12 +30,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Database creation sql statement
 	private static final String TABLE_WEIGHTS_CREATE = "create table "
 			+ TABLE_WEIGHTS + " (" + COLUMN_WEIGHTS_ID
-			+ " integer primary key autoincrement, " + COLUMN_WEIGHTS_PERSON_ID
-			+ " integer,"/*
-						 * + " FOREIGN KEY(" + COLUMN_WEIGHTS_PERSON_ID +
-						 * ") REFERENCES " + TABLE_PEOPLE + "(" +
-						 * COLUMN_PEOPLE_ID + ") "
-						 */+ COLUMN_WEIGHTS_WEIGHT + " DECIMAL(5,2));";
+			+ " INTEGER primary key autoincrement, " + COLUMN_WEIGHTS_PERSON_ID
+			+ " INTEGER,"
+			+ COLUMN_WEIGHTS_WEIGHT + " DECIMAL(5,2),"
+			+ COLUMN_WEIGHTS_TIMESTAMP + " INTEGER);";
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -16,7 +16,8 @@ public class WeightsDataSource {
 		private DatabaseHelper dbHelper;
 		private String[] allColumns = { DatabaseHelper.COLUMN_WEIGHTS_ID,
 				DatabaseHelper.COLUMN_WEIGHTS_PERSON_ID,
-				DatabaseHelper.COLUMN_WEIGHTS_WEIGHT};
+				DatabaseHelper.COLUMN_WEIGHTS_WEIGHT,
+				DatabaseHelper.COLUMN_WEIGHTS_TIMESTAMP};
 
 		public WeightsDataSource(Context context) {
 			dbHelper = new DatabaseHelper(context);
@@ -34,6 +35,7 @@ public class WeightsDataSource {
 			ContentValues values = new ContentValues();
 			values.put(DatabaseHelper.COLUMN_WEIGHTS_PERSON_ID, personId);
 			values.put(DatabaseHelper.COLUMN_WEIGHTS_WEIGHT, weightKg);
+			values.put(DatabaseHelper.COLUMN_WEIGHTS_TIMESTAMP, java.lang.System.currentTimeMillis());
 			long insertId = database.insert(DatabaseHelper.TABLE_WEIGHTS, null,
 					values);
 			Cursor cursor = database.query(DatabaseHelper.TABLE_WEIGHTS,
@@ -50,6 +52,21 @@ public class WeightsDataSource {
 			System.out.println("Weight deleted with id: " + id);
 			database.delete(DatabaseHelper.TABLE_WEIGHTS, DatabaseHelper.COLUMN_WEIGHTS_ID
 					+ " = " + id, null);
+		}
+		
+		public Cursor getWeightsCursor(long personId) {
+			
+			Cursor cursor = database.query(DatabaseHelper.TABLE_WEIGHTS,
+					allColumns, 
+					DatabaseHelper.COLUMN_WEIGHTS_PERSON_ID + " = " + personId, 
+					null, 
+					null, 
+					null, 
+					null);
+
+			cursor.moveToFirst();
+			
+			return cursor;
 		}
 
 		public List<Weight> getAllWeightsForPerson(long personId) {
@@ -94,10 +111,11 @@ public class WeightsDataSource {
 			return cursor.getCount();
 		}
 
-		public Weight modifyWeight(long id, double weightKg) {
+		public Weight modifyWeight(long id, double weightKg, long timestamp) {
 			String strFilter = "_id=" + id;
 			ContentValues values = new ContentValues();
 			values.put(DatabaseHelper.COLUMN_WEIGHTS_WEIGHT, weightKg);
+			values.put(DatabaseHelper.COLUMN_WEIGHTS_TIMESTAMP, timestamp);
 			database.update(DatabaseHelper.TABLE_WEIGHTS, values, strFilter, null);
 
 			Cursor cursor = database.query(DatabaseHelper.TABLE_WEIGHTS,

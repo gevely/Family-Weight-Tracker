@@ -5,6 +5,7 @@ import java.util.List;
 import com.gesoftware.weights.data.PeopleDataSource;
 import com.gesoftware.weights.data.Person;
 import com.gesoftware.weights.data.Weight;
+import com.gesoftware.weights.data.WeightsCursorAdapter;
 import com.gesoftware.weights.data.WeightsDataSource;
 
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -33,7 +35,7 @@ public class WeightEntryFragment extends Fragment {
 	
 	protected Context appContext;
 	protected WeightsDataSource weightsDatasource;
-	protected ArrayAdapter<Weight> mAdapter;
+	protected WeightsCursorAdapter mAdapter;
 	protected Object mActionMode;
 	public int mSelectedItem = -1;
 	private long personId;
@@ -68,12 +70,14 @@ public class WeightEntryFragment extends Fragment {
 				.findViewById(R.id.listWeights);
 		
 		// Get weights for selected person
-		List<Weight> values = weightsDatasource.getAllWeightsForPerson(personId);
+		//List<Weight> values = weightsDatasource.getAllWeightsForPerson(personId);
+		Cursor cursor = weightsDatasource.getWeightsCursor(personId);
 
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		mAdapter = new ArrayAdapter<Weight>(appContext,
-				android.R.layout.simple_list_item_1, values);
+		//mAdapter = new ArrayAdapter<Weight>(appContext,
+		//		android.R.layout.simple_list_item_1, values);
+		mAdapter = new WeightsCursorAdapter(appContext, cursor, 0);
 		listWeights.setAdapter(mAdapter);
 
 		listWeights.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -145,7 +149,7 @@ public class WeightEntryFragment extends Fragment {
 		// save info where you want it
 		Weight newWeight = weightsDatasource.addWeight(personId, Double.parseDouble(weightBox.getText().toString()));
 
-		mAdapter.add(newWeight);
+		//mAdapter.add(newWeight);
 		mAdapter.notifyDataSetChanged();
 
 	}
@@ -203,7 +207,7 @@ public class WeightEntryFragment extends Fragment {
 		if ((mAdapter.getCount() > 0) && (mAdapter.getCount() >= mSelectedItem)) {
 			weight = (Weight) mAdapter.getItem(mSelectedItem);
 			weightsDatasource.deleteWeight(weight);
-			mAdapter.remove(weight);
+			//mAdapter.remove(weight);
 		}
 
 		mAdapter.notifyDataSetChanged();
