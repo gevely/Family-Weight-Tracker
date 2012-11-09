@@ -145,7 +145,8 @@ public class WeightEntryFragment extends Fragment {
 		final EditText weightBox = (EditText) getActivity().findViewById(R.id.edtWeight);
 
 		// save info where you want it
-		Weight newWeight = weightsDatasource.addWeight(personId, Double.parseDouble(weightBox.getText().toString()));
+		Cursor cursor = weightsDatasource.addWeight(personId, Double.parseDouble(weightBox.getText().toString()));
+		mAdapter = new WeightsCursorAdapter(appContext, cursor, 0);
 
 		//mAdapter.add(newWeight);
 		mAdapter.notifyDataSetChanged();
@@ -205,7 +206,9 @@ public class WeightEntryFragment extends Fragment {
 		if ((mAdapter.getCount() > 0) && (mAdapter.getCount() >= mSelectedItem)) {
 			weight = (Weight) mAdapter.getItem(mSelectedItem);
 			weightsDatasource.deleteWeight(weight);
-			//mAdapter.remove(weight);
+			Cursor cursor = weightsDatasource.getWeightsCursor(personId);
+
+			mAdapter = new WeightsCursorAdapter(appContext, cursor, 0);
 		}
 
 		mAdapter.notifyDataSetChanged();

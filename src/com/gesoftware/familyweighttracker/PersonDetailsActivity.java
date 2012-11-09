@@ -31,7 +31,8 @@ public class PersonDetailsActivity extends Activity {
 		ActionBar bar = getActionBar();
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME, ActionBar.DISPLAY_SHOW_HOME);
-
+		bar.setDisplayHomeAsUpEnabled(true);
+		
 		ActionBar.Tab weightEntryTab = bar.newTab().setText("Entry");
 		ActionBar.Tab weightGraphTab = bar.newTab().setText("Graph");
 

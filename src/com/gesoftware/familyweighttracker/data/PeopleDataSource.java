@@ -1,7 +1,6 @@
 package com.gesoftware.familyweighttracker.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -50,8 +49,8 @@ public class PeopleDataSource {
 					+ " = " + id, null);
 		}
 
-		public List<Person> getAllPeople() {
-			List<Person> people = new ArrayList<Person>();
+		public ArrayList<Person> getAllPeople() {
+			ArrayList<Person> people = new ArrayList<Person>();
 
 			Cursor cursor = database.query(DatabaseHelper.TABLE_PEOPLE,
 					allColumns, null, null, null, null, null);

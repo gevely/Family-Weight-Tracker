@@ -31,7 +31,7 @@ public class WeightsDataSource {
 			dbHelper.close();
 		}
 
-		public Weight addWeight(long personId, double weightKg) {
+		public Cursor addWeight(long personId, double weightKg) {
 			ContentValues values = new ContentValues();
 			values.put(DatabaseHelper.COLUMN_WEIGHTS_PERSON_ID, personId);
 			values.put(DatabaseHelper.COLUMN_WEIGHTS_WEIGHT, weightKg);
@@ -41,10 +41,11 @@ public class WeightsDataSource {
 			Cursor cursor = database.query(DatabaseHelper.TABLE_WEIGHTS,
 					allColumns, DatabaseHelper.COLUMN_WEIGHTS_ID + " = " + insertId, null,
 					null, null, null);
-			cursor.moveToFirst();
+/*			cursor.moveToFirst();
 			Weight newWeight = cursorToWeight(cursor);
 			cursor.close();
 			return newWeight;
+*/			return cursor;
 		}
 
 		public void deleteWeight(Weight weight) {

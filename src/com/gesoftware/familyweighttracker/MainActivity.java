@@ -1,11 +1,13 @@
 package com.gesoftware.familyweighttracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +27,7 @@ import android.widget.ListView;
 
 import com.gesoftware.familyweighttracker.data.PeopleDataSource;
 import com.gesoftware.familyweighttracker.data.Person;
+import com.gesoftware.familyweighttracker.data.PersonAdapter;
 import com.gesoftware.familyweighttracker.R;
 
 @TargetApi(11)
@@ -44,12 +47,14 @@ public class MainActivity extends ListActivity {
 		peopleDatasource = new PeopleDataSource(getApplicationContext());
 		peopleDatasource.open();
 
-		List<Person> values = peopleDatasource.getAllPeople();
-
+		ArrayList<Person> values = peopleDatasource.getAllPeople();
+		
+		
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		mAdapter = new ArrayAdapter<Person>(getApplicationContext(),
-				android.R.layout.simple_list_item_1, values);
+		//mAdapter = new PersonAdapter(getApplicationContext(), R.layout.person_row, values);
+		//mAdapter = new ArrayAdapter<Person>(getApplicationContext(), R.layout.person_row, values);
+		mAdapter = new ArrayAdapter<Person>(getApplicationContext(), android.R.layout.simple_list_item_1, values);
 		setListAdapter(mAdapter);
 
 		ListView listView = getListView();

@@ -1,5 +1,6 @@
 package com.gesoftware.familyweighttracker.data;
 
+
 public class Person {
 
 	private long id;
