@@ -1,4 +1,4 @@
-package com.gesoftware.weights.data;
+package com.gesoftware.familyweighttracker.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

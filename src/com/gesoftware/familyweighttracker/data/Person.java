@@ -1,4 +1,4 @@
-package com.gesoftware.weights.data;
+package com.gesoftware.familyweighttracker.data;
 
 public class Person {
 

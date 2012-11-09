@@ -1,18 +1,7 @@
-package com.gesoftware.weights;
+package com.gesoftware.familyweighttracker;
 
-import java.util.List;
-
-import com.gesoftware.weights.data.PeopleDataSource;
-import com.gesoftware.weights.data.Person;
-import com.gesoftware.weights.data.Weight;
-import com.gesoftware.weights.data.WeightsCursorAdapter;
-import com.gesoftware.weights.data.WeightsDataSource;
-
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ActionMode;
@@ -21,15 +10,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
+
+import com.gesoftware.familyweighttracker.data.Weight;
+import com.gesoftware.familyweighttracker.data.WeightsCursorAdapter;
+import com.gesoftware.familyweighttracker.data.WeightsDataSource;
 
 public class WeightEntryFragment extends Fragment {
 	
@@ -39,6 +29,14 @@ public class WeightEntryFragment extends Fragment {
 	protected Object mActionMode;
 	public int mSelectedItem = -1;
 	private long personId;
+	
+	public WeightEntryFragment() {
+		this.appContext = getActivity().getApplicationContext();
+		this.personId = -1;
+		
+		weightsDatasource = new WeightsDataSource(appContext);
+		weightsDatasource.open();
+	}
 	
 	public WeightEntryFragment(Context appContext, long id) {
 		this.appContext = appContext;

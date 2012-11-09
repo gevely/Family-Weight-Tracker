@@ -1,9 +1,9 @@
-package com.gesoftware.weights.data;
+package com.gesoftware.familyweighttracker.data;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.gesoftware.weights.R;
+import com.gesoftware.familyweighttracker.R;
 
 import android.content.Context;
 import android.database.Cursor;

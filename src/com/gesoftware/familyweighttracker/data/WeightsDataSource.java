@@ -1,4 +1,4 @@
-package com.gesoftware.weights.data;
+package com.gesoftware.familyweighttracker.data;
 
 import java.util.ArrayList;
 import java.util.List;

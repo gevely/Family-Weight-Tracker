@@ -1,7 +1,8 @@
-package com.gesoftware.weights;
+package com.gesoftware.familyweighttracker;
 
-import com.gesoftware.weights.data.Weight;
-import com.gesoftware.weights.data.WeightsDataSource;
+import com.gesoftware.familyweighttracker.data.Weight;
+import com.gesoftware.familyweighttracker.data.WeightsDataSource;
+import com.gesoftware.familyweighttracker.R;
 
 import android.os.Bundle;
 import android.app.Fragment;

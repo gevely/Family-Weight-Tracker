@@ -1,4 +1,6 @@
-package com.gesoftware.weights;
+package com.gesoftware.familyweighttracker;
+
+import com.gesoftware.familyweighttracker.R;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

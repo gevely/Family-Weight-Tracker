@@ -1,4 +1,4 @@
-package com.gesoftware.weights;
+package com.gesoftware.familyweighttracker;
 
 import java.util.List;
 
@@ -23,8 +23,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.gesoftware.weights.data.PeopleDataSource;
-import com.gesoftware.weights.data.Person;
+import com.gesoftware.familyweighttracker.data.PeopleDataSource;
+import com.gesoftware.familyweighttracker.data.Person;
+import com.gesoftware.familyweighttracker.R;
 
 @TargetApi(11)
 public class MainActivity extends ListActivity {
