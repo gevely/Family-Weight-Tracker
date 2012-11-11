@@ -97,6 +97,7 @@ public class WeightsDataSource {
 			weight.setId(cursor.getLong(0));
 			weight.setPersonId(cursor.getLong(1));
 			weight.setWeight(cursor.getDouble(2));
+			weight.setDate(cursor.getLong(3));
 			return weight;
 		}
 
