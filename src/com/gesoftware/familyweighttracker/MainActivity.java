@@ -38,6 +38,7 @@ public class MainActivity extends ListActivity {
 	protected Object mActionMode;
 	public int mSelectedItem = -1;
 	public final static String PERSON_ID = "PERSON_ID_EXTRA";
+	public final static String PERSON_NAME = "PERSON_NAME_EXTRA";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -85,8 +86,8 @@ public class MainActivity extends ListActivity {
 					final Person person = (Person) mAdapter.getItem(mSelectedItem);
 					Intent intent = new Intent();
 					intent.setClass(getApplicationContext(), PersonDetailsActivity.class);
-				    Long personId = person.getId();
-				    intent.putExtra(PERSON_ID, personId);
+					intent.putExtra(PERSON_ID, person.getId());
+					intent.putExtra(PERSON_NAME, person.getFirstName());
 				    startActivity(intent);
 				}
 				

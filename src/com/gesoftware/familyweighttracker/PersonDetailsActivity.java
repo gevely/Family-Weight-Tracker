@@ -27,6 +27,12 @@ public class PersonDetailsActivity extends Activity {
 		// Get the message from the intent
 		Intent intent = getIntent();
 		long id = intent.getLongExtra(MainActivity.PERSON_ID, -1);
+		String name = intent.getStringExtra(MainActivity.PERSON_NAME);
+		
+		// Set activity title 
+		if (name != null) {
+			setTitle(name);
+		}
 
 		ActionBar bar = getActionBar();
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

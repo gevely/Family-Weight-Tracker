@@ -49,7 +49,9 @@ public class WeightGraphFragment extends Fragment {
 		GraphViewData[] data = new GraphViewData[numEntries]; 
 		
 		for (int i = 0; i < numEntries; i++) {
-			data[i] = new GraphViewData(weights.get(i).getDateAsLong(), weights.get(i).getWeight());
+			long dateTimeMilli = weights.get(i).getDateAsLong();
+			double weight = weights.get(i).getWeight();
+			data[i] = new GraphViewData(dateTimeMilli, weight);
 		}
 		// init example series data  
 		GraphViewSeries weightSeries = new GraphViewSeries(data);  
@@ -60,11 +62,10 @@ public class WeightGraphFragment extends Fragment {
 			   protected String formatLabel(double value, boolean isValueX) {  
 			      if (isValueX) {  
 			         // convert unix time to human time  
-			         return new SimpleDateFormat("dd-MMM-yy HH:mm:ss").format(value);  
+			         return new SimpleDateFormat("dd-MM").format(value);  
 			      } else return super.formatLabel(value, isValueX); // let the y-value be normal-formatted  
 			   }  
 			};
-		
 		graphView.addSeries(weightSeries); // data  
 		
 		graphView.setScalable(true); 
